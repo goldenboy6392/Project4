@@ -11,12 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index')->name('home.index');
+Route::post('/', 'HomeController@index')->name('home.index');
 
-Route::get('/medications', 'MedicationController@index')->name('medications.index');
-Route::get('/medications', 'MedicationController@show')->name('medications.show');
+Route::post('/medications', 'MedicationController@show')->name('medications.show');
 
 Route::get('/debug', function() {
 
@@ -52,3 +50,7 @@ Route::get('/debug', function() {
     echo '</pre>';
 
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
